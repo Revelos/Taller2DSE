@@ -15,11 +15,11 @@ public class Main {
     private static EntityManager em = JpaUtil.getEntityManager();
     private static  ClienteService cs = new ClienteServiceImpl(em);
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
         do {
             try {
                 StringBuilder sb = new StringBuilder();
-                sb.append("BIENVENIDO AL REGISTRO DE NOTAS\n");
+                sb.append("BIENVENIDO AL REGISTRO DE CLIENTES\n");
                 sb.append("Seleccione una opcion\n");
                 sb.append("\t1. Agregar cliente\n");
                 sb.append("\t2. Modificar cliente\n");
@@ -53,7 +53,7 @@ public class Main {
                             cs.guardar(clienteEdit);
                             JOptionPane.showMessageDialog(null,"Datos actualizados con exito","Proceso exitoso",JOptionPane.INFORMATION_MESSAGE);
                         }else{
-                            JOptionPane.showMessageDialog(null,"No existe ese cliente","NO DATA",JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"No existe cliente con ese ID","NO DATA",JOptionPane.ERROR_MESSAGE);
                         }
                         break;
                     case 3:
@@ -62,6 +62,8 @@ public class Main {
                         if(responses.isPresent()){
                             cs.eliminar(Long.valueOf(idDelete));
                             JOptionPane.showMessageDialog(null,"Cliente eliminado con exito","Proceso exitoso",JOptionPane.INFORMATION_MESSAGE);
+                        }else{
+                        JOptionPane.showMessageDialog(null,"No existe cliente con ese ID","NO DATA",JOptionPane.ERROR_MESSAGE);
                         }
 
                         break;
